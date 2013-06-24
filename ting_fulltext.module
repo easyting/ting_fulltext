@@ -47,6 +47,7 @@ function ting_fulltext_object_load($object_id) {
   module_load_include('client.inc', 'ting');
   $xml = ting_cache_get($object_id . ':FULLTEXT');
 
+  $is_fulltext = TRUE;
   if (!$xml) {
     $request = ting_get_request_factory()->getObjectRequest();
     $request->setObjectId($object_id);
@@ -54,7 +55,7 @@ function ting_fulltext_object_load($object_id) {
     $request->setFormat('docbook');
     $request->setObjectFormat('docbook');
     $request->setOutputType('xml');
-    $xml = ting_execute($request);
+    $xml = ting_execute($request, $is_fulltext);
     ting_cache_set($object_id . ':FULLTEXT', $xml);
   }
 

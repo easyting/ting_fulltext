@@ -11,9 +11,7 @@ function ting_fulltext_page_view($object) {
   $build['ting_fulltext'] = array(
     '#theme' => 'ting_fulltext',
     '#fields' => ting_fulltext_parse($object),
-    '#attached' =>
-    array('css' => array(drupal_get_path('module', 'ting_fulltext') . '/ting_fulltext.css'),),
-    );
+  );
   return $build;
 }
 
