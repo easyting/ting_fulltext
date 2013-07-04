@@ -49,15 +49,17 @@ function ting_fulltext_object_load($object_id) {
 
   $is_fulltext = TRUE;
   if (!$xml) {
-    $request = ting_get_request_factory()->getObjectRequest();
+    $request = ting_get_request_factory()->getFulltextRequest();
     $request->setObjectId($object_id);
     $request->setProfile(variable_get('ting_search_profile', ''));
     $request->setFormat('docbook');
     $request->setObjectFormat('docbook');
     $request->setOutputType('xml');
-    $xml = ting_execute($request, $is_fulltext);
+    $xml = ting_execute($request);
     ting_cache_set($object_id . ':FULLTEXT', $xml);
   }
+
+  // @TODO: process dkabm format because some objects has it only.
 
   return $xml;
 }
