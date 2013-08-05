@@ -100,9 +100,9 @@ function ting_fulltext_get_section($node) {
 function ting_fulltext_get_xpath($xml) {
   // TODO errorhandling
   $dom = new DOMDocument();
-  $dom->loadXML($xml);
+  $dom->loadXML($xml->scalar);
   $xpath = new DOMXPath($dom);
-  $xpath->registerNamespace('docbook','http://docbook.org/ns/docbook');
+  $xpath->registerNamespace('docbook', 'http://docbook.org/ns/docbook');
   return $xpath;
 }
 
